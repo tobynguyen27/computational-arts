@@ -1,0 +1,38 @@
+---
+import Link from '@components/base/Link.astro'
+import Default from '@layouts/Default.astro'
+import { getCollection } from 'astro:content'
+import { joinURL } from 'ufo'
+import type { ArtSchema } from '../contents/schema'
+
+const arts = await getCollection('arts')
+
+const works: (ArtSchema & { path: string })[] = arts.map((work) => {
+    return {
+        path: joinURL('/works', work.id),
+        ...work.data,
+    }
+})
+---
+
+<Default title="Toby Nguyen" overrideTitle>
+    <div class="container mt-32 space-y-12">
+        <div class="">
+            <h1 class="text-3xl mb-2 font-bold">Computational Arts</h1>
+            <p class="text-lg font-mono">
+                This is where I upload experiments at the intersection of code and creativity — generative algorithms,
+                interactive visuals, and everything in between. Hope you enjoy my works.
+            </p>
+        </div>
+        <div class="grid place-items-center gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {
+                works.map(({ name, description, path }) => (
+                    <Link to={path} class="border w-full p-5 border-default rounded-xl bg-surface">
+                        <h2 class="text-2xl font-bold mb-2">{name}</h2>
+                        <p class="text-sm text-muted">{description}</p>
+                    </Link>
+                ))
+            }
+        </div>
+    </div>
+</Default>

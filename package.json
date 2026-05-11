@@ -1,0 +1,47 @@
+{
+    "type": "module",
+    "private": true,
+    "packageManager": "pnpm@10.33.4",
+    "engines": {
+        "node": ">=22"
+    },
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro",
+        "lint": "eslint",
+        "lint:fix": "eslint --fix",
+        "up": "taze"
+    },
+    "dependencies": {
+        "astro": "catalog:dev"
+    },
+    "devDependencies": {
+        "@antfu/eslint-config": "catalog:lint",
+        "@astrojs/compiler-rs": "catalog:dev",
+        "@astrojs/partytown": "catalog:dev",
+        "@astrojs/react": "catalog:dev",
+        "@astrojs/sitemap": "catalog:dev",
+        "@iconify/json": "catalog:dev",
+        "@types/react": "catalog:types",
+        "@types/react-dom": "catalog:types",
+        "@unocss/astro": "catalog:dev",
+        "@unocss/eslint-plugin": "catalog:lint",
+        "astro-eslint-parser": "catalog:lint",
+        "astro-seo": "catalog:dev",
+        "eslint": "catalog:lint",
+        "eslint-plugin-astro": "catalog:lint",
+        "eslint-plugin-format": "catalog:lint",
+        "prettier-plugin-astro": "catalog:lint",
+        "react": "catalog:dev",
+        "react-dom": "catalog:dev",
+        "sharp": "catalog:dev",
+        "takumi-js": "catalog:dev",
+        "taze": "catalog:dev",
+        "ufo": "catalog:dev",
+        "unocss": "catalog:dev",
+        "vite-plugin-glsl": "catalog:dev",
+        "wrangler": "catalog:dev"
+    }
+}

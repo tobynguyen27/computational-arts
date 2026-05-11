@@ -1,0 +1,23 @@
+{
+    "extends": "astro/tsconfigs/strictest",
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "jsxImportSource": "react",
+        "paths": {
+            "@components/*": ["./src/components/*"],
+            "@layouts/*": ["./src/layouts/*"],
+            "@assets/*": ["./src/assets/*"],
+            "@utils/*": ["./src/utils/*"]
+        },
+        "types": [
+            "vite-plugin-glsl/ext"
+        ]
+    },
+    "include": [
+        ".astro/types.d.ts",
+        "**/*"
+    ],
+    "exclude": [
+        "dist"
+    ]
+}

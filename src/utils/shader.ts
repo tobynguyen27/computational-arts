@@ -54,5 +54,5 @@ export function resize(gl: WebGL2RenderingContext, canvas: RefObject<HTMLCanvasE
     canvas.current.width = Math.floor(rect.width * dpr)
     canvas.current.height = Math.floor(rect.height * dpr)
 
-    gl.viewport(0, 0, rect.width, rect.height)
+    gl.viewport(0, 0, canvas.current.width, canvas.current.height)
 }

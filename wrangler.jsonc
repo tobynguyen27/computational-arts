@@ -1,6 +1,6 @@
 {
     "$schema": "node_modules/wrangler/config-schema.json",
-    "name": "tobynguyen-website",
+    "name": "tobynguyen-ca-website",
     "compatibility_date": "2025-06-08",
     "assets": {
         "directory": "./dist",

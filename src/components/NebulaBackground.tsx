@@ -2,7 +2,7 @@ import fragmentShader from '@assets/shader/NebulaBackground.frag'
 import vertexShader from '@assets/shader/NebulaBackground.vert'
 import { cyrb128, sfc32 } from '@utils/crypto'
 import { easeOutQuart } from '@utils/math'
-import { createProgram, createShader, resize } from '@utils/shader'
+import { createProgram, createShader } from '@utils/shader'
 
 import { useEffect, useRef, useState } from 'react'
 import '@assets/css/NebulaBackground.css'
@@ -71,8 +71,25 @@ export default function NebulaBackground() {
         gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
         gl.clearColor(0, 0, 0, 0)
 
+        const resizeObserver = new ResizeObserver((entries) => {
+            for (const entry of entries) {
+                const { width, height } = entry.contentRect
+                const dpr = window.devicePixelRatio
+
+                const displayWidth = Math.floor(width * dpr)
+                const displayHeight = Math.floor(height * dpr)
+
+                if (canvas.current!.width !== displayWidth || canvas.current!.height !== displayHeight) {
+                    canvas.current!.width = displayWidth
+                    canvas.current!.height = displayHeight
+                }
+            }
+        })
+
+        resizeObserver.observe(canvas.current)
+
         const render = (timestamp: DOMHighResTimeStamp) => {
-            resize(gl, canvas)
+            gl.viewport(0, 0, canvas.current!.width, canvas.current!.height)
 
             if (hueOffset.current.target !== hueOffset.current.current) {
                 if (hueOffset.current.startedAt === null)
@@ -109,6 +126,12 @@ export default function NebulaBackground() {
 
         return () => {
             running = false
+            resizeObserver.disconnect()
+            gl.deleteProgram(program)
+            gl.deleteShader(vertex)
+            gl.deleteShader(fragment)
+            gl.deleteBuffer(positionBuffer)
+            gl.deleteVertexArray(vao)
         }
     }, [canvas, hueOffset])
 

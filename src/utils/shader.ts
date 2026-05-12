@@ -43,16 +43,3 @@ export function createProgram(gl: WebGL2RenderingContext, vertex: WebGLShader, f
         throw new Error('Failed to link program, check Browser Console for details.')
     }
 }
-
-export function resize(gl: WebGL2RenderingContext, canvas: RefObject<HTMLCanvasElement | null>) {
-    if (!canvas.current)
-        throw new Error('Cannot resize a non existent canvas')
-
-    const rect = canvas.current.getBoundingClientRect()
-    const dpr = window.devicePixelRatio
-
-    canvas.current.width = Math.floor(rect.width * dpr)
-    canvas.current.height = Math.floor(rect.height * dpr)
-
-    gl.viewport(0, 0, canvas.current.width, canvas.current.height)
-}

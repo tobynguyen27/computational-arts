@@ -21,6 +21,16 @@ export default defineConfig({
         name: 'Geist Mono',
         cssVariable: '--font-geist-mono',
         fallbacks: ['monospace'],
+    }, {
+        provider: fontProviders.local(),
+        name: 'Geist Pixel',
+        cssVariable: '--font-geist-pixel',
+        fallbacks: ['monospace'],
+        options: {
+            variants: [{
+                src: ['./src/assets/font/GeistPixel-Square.woff2'],
+            }],
+        },
     }],
 
     experimental: {

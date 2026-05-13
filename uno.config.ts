@@ -60,9 +60,9 @@ export default defineConfig({
     theme: {
         colors,
         font: {
-            serif: 'var(--font-erode)',
             mono: 'var(--font-geist-mono)',
             sans: 'var(--font-geist)',
+            pixel: 'var(--font-geist-pixel)',
         },
     },
     shortcuts: {
